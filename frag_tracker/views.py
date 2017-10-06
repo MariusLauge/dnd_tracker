@@ -18,6 +18,10 @@ def index(request):
 
 class CharacterListView(generic.ListView):
     model = Character
-
+    
     context_object_name = 'character_list'
-    template_name = 'characters/template_character_list.html'  # Specify your own template name/location
+    template_name = 'frag_tracker/templates/frag_tracker/character_list.html'
+
+
+class CharacterDetailView(generic.DetailView):
+    model = Character
