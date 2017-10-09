@@ -25,3 +25,10 @@ class CharacterListView(generic.ListView):
 
 class CharacterDetailView(generic.DetailView):
     model = Character
+
+
+class HallOfFameListView(generic.ListView):
+    model = Character
+
+    context_object_name = 'hall_of_fame_list'
+    template_name = 'frag_tracker/templates/frag_tracker/hall_of_fame.html'
