@@ -18,7 +18,7 @@ def index(request):
 
 class CharacterListView(generic.ListView):
     model = Character
-    
+
     context_object_name = 'character_list'
     template_name = 'frag_tracker/templates/frag_tracker/character_list.html'
 
