@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Character
+from django.http import Http404
 
 
 def index(request):
@@ -23,9 +24,17 @@ class CharacterListView(generic.ListView):
     template_name = 'frag_tracker/templates/frag_tracker/character_list.html'
 
 
-class CharacterDetailView(generic.DetailView):
-    model = Character
+def character_detail_view(request, pk):
+    try:
+        character_id = Character.objects.get(pk=pk)
+    except Character.DoesNotExist:
+        raise Http404("Book does not exist")
 
+    return render(
+        request,
+        'frag_tracker/character_detail.html',
+        context={'character': character_id, }
+    )
 
 class HallOfFameListView(generic.ListView):
     model = Character
