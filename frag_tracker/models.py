@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Character(models.Model):
@@ -36,3 +37,6 @@ class Character(models.Model):
         """
         return "{}, level {} {} {}".format(self.name, self.level, self.player_sub_class, self.get_player_super_class_display())
 
+
+    def get_absolute_url(self):
+        return reverse('character-detail', args=[str(self.id)])
