@@ -36,6 +36,17 @@ def character_detail_view(request, pk):
         context={'character': character_id, }
     )
 
+
+def hall_of_fame_list_view(request):
+    hof_list = Character.objects.filter(alive=False)
+
+    return render(
+        request,
+        'frag_tracker/hall_of_fame.html',
+        context={'halloffamelist': hof_list, }
+    )
+
+
 class HallOfFameListView(generic.ListView):
     model = Character
 

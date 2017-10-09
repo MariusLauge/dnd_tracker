@@ -3,15 +3,12 @@
 {% block content %}
     <h1>Hall of Fame List</h1>
 
-    {% if hall_of_fame_list %}
+    {% if halloffamelist %}
         <ul>
-
-            {% for character in hall_of_fame_list %}
+            {% for character in halloffamelist %}
                 <li>
-                    {% if not character.alive %}
                     <a href="{{ character.get_absolute_url }}">{{ character.name }}</a>,
                     level {{ character.level }} {{ character.player_sub_class }} {{ character.get_player_super_class_display }}
-                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
