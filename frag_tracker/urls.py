@@ -1,5 +1,4 @@
-from django.conf.urls import url
-
+from django.conf.urls import url, include
 from . import views
 
 
@@ -8,4 +7,5 @@ urlpatterns = [
     url(r'^character/(?P<pk>\d+)$', views.character_detail_view, name='character-detail'),
     url(r'^characterlistview', views.CharacterListView.as_view(), name='redirecthomepage'),
     url(r'^halloffame/$', views.hall_of_fame_list_view, name="halloffameview"),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
